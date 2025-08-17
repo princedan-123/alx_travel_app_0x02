@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from listings.urls import app_urlpatterns
+from listings.views import PaymentView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(app_urlpatterns))
+    path('initialize_payment', PaymentView.as_view('post': 'create'))
 ]

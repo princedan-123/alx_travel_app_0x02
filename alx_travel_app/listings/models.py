@@ -50,3 +50,9 @@ class Review(models.Model):
     
     def __str__(self):
         return f'{self.review_id} -- Rating {self.rating}'
+
+class Payment(models.Model):
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_status = models.CharField(max_length=10, choices=Status.choices)
+    booking = models.OneToOneField(booking, on_delete=models.CASCADE, related_name=booking)
+    transcation_id = models.CharField(max_length=100)
